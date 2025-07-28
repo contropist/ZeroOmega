@@ -88,24 +88,25 @@ below.
 ## Building the project
 
 ZeroOmega has migrated to use npm and grunt for building. Please note that
-npm 2.x is required for this project.
+node 20.x is required for this project.
 
 To build the project:
 
-    # Install node and npm first (make sure npm --version > 2.0), then:
+    # Install node and npm first (make sure node --version >= 20), then:
     
-    sudo npm install -g grunt-cli@1.2.0 bower
     # In the project folder:
     cd omega-build
     npm run deps # This runs npm install in every module.
     npm run dev # This runs npm link to aid local development.
     # Note: the previous command may require sudo in some environments.
     # The modules are now working. We can build now:
-    grunt
-    # After building, a folder will be generated:
-    cd .. # Return to project root.
-    ls omega-target-chromium-extension/build/
+    npm run build
+    # After building, a "build" folder will be generated in omega-target-chromium-extension folder.
     # The folder above can be loaded as an unpacked extension in Chromium now.
+    npm run release
+    # After release, a "dist" folder will be generated in root folder.
+    cd ../dist # Return to generated folder.
+    # The chromium-release.zip and firefox-release.zip are the package files corresponding to chromium and firefox respectively.
 
 To enable `grunt watch`, run `grunt watch` once in the `omega-build` directory.
 This will effectively run `grunt watch` in every module in this project.
